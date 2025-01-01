@@ -1,13 +1,13 @@
 {
-  "name": "Demo",
+  "name": "cocomo",
   "version": "1.0.0",
-  "productName": "Demo",
+  "productName": "cocomo",
   "description": "Modded Minecraft Launcher",
   "author": "babybear(https://github.com/BabyBear7/launcher-demo)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/BabyBear7/launcher-demo",
+  "homepage": "https://github.com/olleh33/cocomo",
   "bugs": {
-    "url": "https://github.com/BabyBear7/launcher-demo/issues"
+    "url": "https://github.com/olleh33/cocomo/issues"
   },
   "private": true,
   "main": "index.js",
@@ -46,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BabyBear7/launcher-demo.git"
+    "url": "git+https://github.com/olleh33/cocomo.git"
   }
 }

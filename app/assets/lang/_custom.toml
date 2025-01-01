@@ -1,20 +1,20 @@
 # Custom Language File for Launcher Customizer
 
 [ejs.app]
-title = "Launcher-Demo"
+title = "cocomo"
 
 [ejs.landing]
-mediaGitHubURL = "https://github.com/BabyBear7/launcher-demo"
+mediaGitHubURL = "https://github.com/olleh33/cocomo"
 mediaTwitterURL = "#"
 mediaInstagramURL = "#"
 mediaYouTubeURL = "#"
-mediaDiscordURL = "https://discord.gg/ReY7HJY7w6"
+mediaDiscordURL = "https://discord.gg/a5kwVx6k5x"
 
 [ejs.settings]
-sourceGithubLink = "https://github.com/BabyBear7/launcher-demo"
-supportLink = "https://github.com/BabyBear7/launcher-demo/issues"
+sourceGithubLink = "https://github.com/olleh33/cocomo"
+supportLink = "https://github.com/olleh33/cocomo/issues"
 
 [ejs.welcome]
-welcomeHeader = "런처 데모 페이지입니다"
+welcomeHeader = "코코모 월드에 오신 것을 환영합니다."
 welcomeDescription = "해당 런처는 '아이곰(discord: babybear7)'에 의해 제작되었습니다."
 welcomeDescCTA = "몇번만 더 클릭하시면 됩니다!"
