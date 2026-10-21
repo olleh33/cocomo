@@ -1,9 +1,10 @@
 {
-  "version": "3.0.0",
-  "local_checks": 66,
+  "version": "3.0.1",
+  "release": "3.0.3",
+  "local_checks": 73,
   "source_rebuild_reproducible": true,
-  "exe_sha256": "0282424da91f4edeb28827d8c1edad59f4aa6c0170854d8cf03c27b93471419b",
-  "zip_sha256": "ace3b200a19e4798dc67178800c1ba99d5696750be874f913c2d091030a3d9ce",
-  "visual_screen_test": "not yet performed; screen control was stopped",
+  "exe_sha256": "39a17a7aa6a7f6855b831b54f6d99e11a613a7b64d257535d4a5637a0c986548",
+  "zip_sha256": "489cbbe8199e4f878a805ab4560f943e8e364226288846cbeee329cbdb6649a7",
+  "visual_screen_test": "Not repeated; domain-only change checked by address tests and isolated preparation.",
   "real_account_read": false
 }

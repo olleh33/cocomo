@@ -45,7 +45,7 @@ namespace MokoLauncher {
         private bool settingsOpen, downloadAnimating, resourcesDisposed;
         private int progressTick;
         private readonly string dataPath;
-        public string PublicDomain="뫀코코.kro.kr";
+        public string PublicDomain=GitHubDistribution.ServerDomain;
         public int AnimationFrames { get; private set; }
         public string CurrentMode { get{return mode;} }
         public bool SettingsOpen {

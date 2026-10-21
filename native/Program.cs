@@ -10,8 +10,8 @@ using System.Windows.Forms;
 
 [assembly:AssemblyTitle("뫀코코의 마을 접속기")]
 [assembly:AssemblyProduct("뫀코코의 마을")]
-[assembly:AssemblyVersion("3.0.0.0")]
-[assembly:AssemblyFileVersion("3.0.0.0")]
+[assembly:AssemblyVersion("3.0.1.0")]
+[assembly:AssemblyFileVersion("3.0.1.0")]
 [assembly:AssemblyDescription("검증된 패치를 직접 적용하는 Windows 접속기")]
 namespace MokoLauncher {
     public static class Program {
@@ -40,7 +40,7 @@ namespace MokoLauncher {
                 object defaults=Engine.Parse(Encoding.UTF8.GetString(Engine.Resource("launcher-defaults.json")));
                 string settingsFile=Engine.Child(data,"client-settings.json");
                 object settings=File.Exists(settingsFile)?Engine.Parse(File.ReadAllText(settingsFile,Encoding.UTF8)):defaults;
-                server=server??Engine.Str(settings,"serverAddress");
+                server=server??GitHubDistribution.MigrateServerAddress(Engine.Str(settings,"serverAddress"),Engine.Str(defaults,"serverAddress"));
                 if(patch==null)patch=GitHubDistribution.MigratePatchAddress(Engine.Str(settings,"patchUrl"),Engine.Str(defaults,"legacyPatchUrl"));
                 Engine.ServerAddress(server);Engine.PatchAddress(patch);
                 using(var mutex=new Mutex(false,"Local\\MokoLauncher2-"+Engine.Hash(Encoding.UTF8.GetBytes(Path.GetFullPath(data).ToLowerInvariant())).Substring(0,24))){
@@ -50,7 +50,7 @@ namespace MokoLauncher {
                         if(prepare){var engine=new Engine(root,data,delegate{});engine.Prepare(server,patch,false);WriteResult(data,true,"패치 점검 완료");return 0;}
                         Application.EnableVisualStyles();Application.SetCompatibleTextRenderingDefault(false);
                         using(var form=new MainWindow(Path.Combine(root,"assets"),data)){
-                            form.Text="뫀코코의 마을 · 접속기 3.0";form.ServerInput.Text=server;form.PatchInput.Text=patch;
+                            form.Text="뫀코코의 마을 · 접속기 "+GitHubDistribution.CurrentVersion;form.ServerInput.Text=server;form.PatchInput.Text=patch;
                             bool busy=false;
                             Action<bool> enabled=on=>{foreach(var button in new[]{form.PlayButton,form.LoginButton,form.InstallButton,form.SettingsButton,form.SaveButton})button.Enabled=on;form.ServerInput.Enabled=on;form.PatchInput.Enabled=on;};
                             Action save=()=>{

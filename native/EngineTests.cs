@@ -19,6 +19,14 @@ class EngineTests {
         Test("invalid_signature_rejected",()=>Reject(()=>Engine.VerifyManifest(B(m),"not-base64")));
         Test("oversized_manifest_rejected",()=>Reject(()=>Engine.VerifyManifest(new byte[131073],sig)));
         Test("korean_domain_idna",()=>Assert(Engine.ServerAddress("뫀코코.kro.kr:25565").StartsWith("xn--")));
+        string currentServer=GitHubDistribution.ServerDomain+":25565";
+        Test("new_domain_exact_idna",()=>Assert(Engine.ServerAddress(currentServer)=="xn--v52b219aa.xn--yq5b.xn--3e0b707e:25565"));
+        Test("old_server_unicode_migrates",()=>Assert(GitHubDistribution.MigrateServerAddress("뫀코코.kro.kr:25565",currentServer)==currentServer));
+        Test("old_server_ascii_migrates",()=>Assert(GitHubDistribution.MigrateServerAddress("xn--k62bi09aa.kro.kr:25565",currentServer)==currentServer));
+        Test("old_server_implicit_port_migrates",()=>Assert(GitHubDistribution.MigrateServerAddress("뫀코코.kro.kr",currentServer)==currentServer));
+        Test("custom_server_is_preserved",()=>Assert(GitHubDistribution.MigrateServerAddress("localhost:25565",currentServer)=="localhost:25565"));
+        Test("custom_old_domain_port_is_preserved",()=>Assert(GitHubDistribution.MigrateServerAddress("뫀코코.kro.kr:25576",currentServer)=="뫀코코.kro.kr:25576"));
+        Test("new_server_is_idempotent",()=>Assert(GitHubDistribution.MigrateServerAddress(currentServer,currentServer)==currentServer));
         Test("patch_http_signature_transport",()=>Assert(Engine.PatchAddress("http://localhost:8163/")=="http://localhost:8163"));
         Test("old_default_patch_address_migrates_to_github",()=>Assert(GitHubDistribution.MigratePatchAddress("http://example.com:8163/","http://example.com:8163")==GitHubDistribution.Latest));
         Test("custom_patch_address_is_preserved",()=>Assert(GitHubDistribution.MigratePatchAddress("http://localhost:8163","http://example.com:8163")=="http://localhost:8163"));

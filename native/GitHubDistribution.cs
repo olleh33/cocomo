@@ -9,7 +9,13 @@ namespace MokoLauncher {
     public static class GitHubDistribution {
         public const string Repository = "olleh33/cocomo";
         public const string Latest = "https://github.com/"+Repository+"/releases/latest/download";
-        public const string CurrentVersion = "3.0.0";
+        public const string CurrentVersion = "3.0.1";
+        public const string ServerDomain = "모코코.웹.한국";
+        public static string MigrateServerAddress(string saved,string current) {
+            string address=Engine.ServerAddress(saved);
+            string previous=Engine.Host("뫀코코.kro.kr");
+            return address.Equals(previous,StringComparison.OrdinalIgnoreCase)||address.Equals(previous+":25565",StringComparison.OrdinalIgnoreCase)?current:saved;
+        }
         public static string MigratePatchAddress(string saved,string legacy) {
             return Engine.PatchAddress(saved).Equals(Engine.PatchAddress(legacy),StringComparison.OrdinalIgnoreCase)?Latest:saved;
         }
