@@ -1,24 +1,24 @@
 {
-  "version": "3.0.0",
-  "tag": "moko-v3.0.0",
+  "version": "3.0.1",
+  "tag": "moko-v3.0.1",
   "assets": [
     {
-      "name": "resourcepack-2818d648467e.zip",
-      "source": "http://뫀코코.kro.kr:8163/resourcepack-2818d648467e29f87b7f488c23af1eff5371ac1ed8a257119647383cbdb3bb8a.zip",
-      "sha256": "2818d648467e29f87b7f488c23af1eff5371ac1ed8a257119647383cbdb3bb8a",
-      "bytes": 22185363
+      "name": "resourcepack-8e0de767df77.zip",
+      "sha256": "8e0de767df77cacca74ae254ecdf395f5a088c5fd059f0f090ae123babe7ebc3",
+      "bytes": 22204456,
+      "source": "http://뫀코코.kro.kr:8163/resourcepack-8e0de767df77cacca74ae254ecdf395f5a088c5fd059f0f090ae123babe7ebc3.zip"
     },
     {
-      "name": "ui-c63c6afdc676.zip",
-      "source": "http://뫀코코.kro.kr:8163/ui.zip",
-      "sha256": "c63c6afdc6761c1d43ea7b0225cb1aa0f43d8e413236abcccd1d8c77b8465c78",
-      "bytes": 8062700
+      "name": "ui-8f8a3e8ae9c7.zip",
+      "sha256": "8f8a3e8ae9c757fabf956bdcc6f056021f1e546db40114d0b9f718c202f6f28e",
+      "bytes": 8083440,
+      "source": "http://뫀코코.kro.kr:8163/resourcepack-8f8a3e8ae9c757fabf956bdcc6f056021f1e546db40114d0b9f718c202f6f28e.zip"
     },
     {
-      "name": "MokoKeys-1.3.1-c684da348e4c.jar",
-      "sha256": "c684da348e4cf19d715457b4c008885cfc7051e2fe4e51a5b76254a3e0d2d3b4",
-      "bytes": 70945,
-      "local_file": "release-assets/MokoKeys-1.3.1-c684da348e4c.jar"
+      "name": "MokoKeys-1.3.1-9bfee52d7df8.jar",
+      "sha256": "9bfee52d7df8b3c22b17b6169b264a9cab220462f587979ee528a7c1cb6bff2f",
+      "bytes": 70966,
+      "local_file": "release-assets/MokoKeys-1.3.1-9bfee52d7df8.jar"
     },
     {
       "name": "bsl-ko-b0bc9c240ddf.lang",
