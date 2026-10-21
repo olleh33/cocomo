@@ -1,0 +1,42 @@
+name: Moko launcher 3
+on:
+  push:
+    branches: [moko-v3]
+    paths: ['native/**', '.github/workflows/moko-native-v3.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: moko-launcher-release
+  cancel-in-progress: false
+jobs:
+  verify-and-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: '10.0.401'
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Build and test reviewed sources
+        shell: pwsh
+        run: |
+          python native/scripts/build.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          & native/bin/LauncherTests.exe native/bin/unit-tests
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python native/scripts/prepare_release.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Publish verified release assets
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $release = Get-Content native/release-input.json -Raw | ConvertFrom-Json
+          gh release view $release.tag --repo $env:GITHUB_REPOSITORY *> $null
+          if ($LASTEXITCODE -eq 0) { throw 'Release tag already exists; use a new version to preserve immutable assets.' }
+          $files = @(Get-ChildItem native/bin/release -File | ForEach-Object FullName)
+          gh release create $release.tag @files --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --title "뫀코코 접속기 $($release.version)" --notes-file native/RELEASE-NOTES.md --latest
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }

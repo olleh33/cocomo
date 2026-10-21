@@ -1,0 +1,5 @@
+bin/
+data/
+.launcher-update/
+.launcher-backup/
+test-runs/

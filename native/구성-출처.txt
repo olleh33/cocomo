@@ -1,0 +1,12 @@
+뫀코코의 마을 접속기 3.0
+서명된 GitHub 배포 파일을 검증·적용하는 자체 제작 Windows 접속기
+로그인과 게임 실행: 공식 Prism Launcher 11.1.1
+https://github.com/PrismLauncher/PrismLauncher/releases/tag/11.1.1
+한국어 Prism 번역: https://github.com/PrismLauncher/Translations (Apache-2.0)
+라이선스: Prism-Translations-LICENSE.txt
+Microsoft 계정은 Prism이 관리하며 접속기는 인증 정보에 접근하지 않아요.
+클라이언트 모드: Fabric API, Sodium, Iris, IMBlocker, Cloth Config, JourneyMap
+셰이더: BSL Shaders (공식 Modrinth 배포본과 한국어 번역)
+자체 제작 모드: MokoKeys
+각 배포 파일의 SHA-256과 크기를 확인하고 서버 운영자의 RSA 서명을 검증해요.
+Windows .NET Framework 4.8 호환 / Windows 64비트

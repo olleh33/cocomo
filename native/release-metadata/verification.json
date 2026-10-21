@@ -1,0 +1,9 @@
+{
+  "version": "3.0.0",
+  "local_checks": 66,
+  "source_rebuild_reproducible": true,
+  "exe_sha256": "0282424da91f4edeb28827d8c1edad59f4aa6c0170854d8cf03c27b93471419b",
+  "zip_sha256": "ace3b200a19e4798dc67178800c1ba99d5696750be874f913c2d091030a3d9ce",
+  "visual_screen_test": "not yet performed; screen control was stopped",
+  "real_account_read": false
+}
