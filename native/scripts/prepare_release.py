@@ -1,6 +1,6 @@
 """Fetch exact reviewed release bytes; signatures bind executable and game assets."""
 from pathlib import Path
-import base64,json,hashlib,urllib.request,urllib.parse,xml.etree.ElementTree as ET,zipfile,subprocess,shutil
+import base64,json,hashlib,urllib.request,urllib.parse,xml.etree.ElementTree as ET,zipfile,subprocess,shutil,time
 N=Path(__file__).resolve().parents[1];OUT=N/'bin/release';OUT.mkdir(parents=True,exist_ok=True)
 record=json.loads((N/'release-input.json').read_text(encoding='utf8'));public=ET.fromstring((N/'resources/publisher-public.xml').read_text())
 integer=lambda name:int.from_bytes(base64.b64decode(public.findtext(name)),'big')
@@ -34,5 +34,9 @@ with zipfile.ZipFile(archive) as z:
  assert set(z.namelist())==allowed and len(z.namelist())==len(allowed)
  z.extractall(test)
 proof=json.loads((N/'release-metadata/verification.json').read_text());assert hashlib.sha256((test/'뫀코코접속기.exe').read_bytes()).hexdigest()==proof['exe_sha256']
-shutil.copy2(N/'bin/LauncherTests.exe',test/'LauncherTests.exe');subprocess.run([str(test/'LauncherTests.exe'),str(test/'results')],check=True)
+shutil.copy2(N/'bin/LauncherTests.exe',test/'LauncherTests.exe')
+# Extraction tests intentionally reject overwriting files; use a fresh fixture on every run.
+results=test/('results-'+str(time.time_ns()));assert not results.exists()
+subprocess.run([str(test/'LauncherTests.exe'),str(results)],check=True)
+shutil.copy2(results/'result.json',N/'bin/release-runtime-verification.json')
 print('Exact packaged launcher passed runtime tests; all release asset hashes and publisher signatures verified.')

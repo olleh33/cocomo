@@ -1,6 +1,6 @@
 {
-  "version": "3.0.3",
-  "tag": "moko-v3.0.3",
+  "version": "3.0.4",
+  "tag": "moko-v3.0.4",
   "assets": [
     {
       "name": "resourcepack-10d9c6c13593.zip",
@@ -27,10 +27,10 @@
       "local_file": "release-assets/bsl-ko-b0bc9c240ddf.lang"
     },
     {
-      "name": "mokokoko-launcher-3.0.0.zip",
-      "sha256": "ace3b200a19e4798dc67178800c1ba99d5696750be874f913c2d091030a3d9ce",
-      "bytes": 499617,
-      "local_file": "release-assets/mokokoko-launcher-3.0.0.zip"
+      "name": "mokokoko-launcher-3.0.1.zip",
+      "sha256": "489cbbe8199e4f878a805ab4560f943e8e364226288846cbeee329cbdb6649a7",
+      "bytes": 499752,
+      "local_file": "release-assets/mokokoko-launcher-3.0.1.zip"
     }
   ]
 }
