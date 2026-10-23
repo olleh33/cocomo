@@ -1,18 +1,18 @@
 {
-  "version": "3.0.4",
-  "tag": "moko-v3.0.4",
+  "version": "3.0.5",
+  "tag": "moko-v3.0.5",
   "assets": [
     {
-      "name": "resourcepack-10d9c6c13593.zip",
-      "sha256": "10d9c6c135936091e5d4757de01761ea1fd5b8c7b99fe96a977ed0f7fed67487",
-      "bytes": 23171792,
-      "source": "http://모코코.웹.한국:8163/resourcepack-10d9c6c135936091e5d4757de01761ea1fd5b8c7b99fe96a977ed0f7fed67487.zip"
+      "name": "resourcepack-646ffc78a688.zip",
+      "sha256": "646ffc78a68818ff7a927a5493f1f33975a5d864ad683bf7814912e5b8ce2456",
+      "bytes": 23171973,
+      "source": "http://모코코.웹.한국:8163/resourcepack-646ffc78a68818ff7a927a5493f1f33975a5d864ad683bf7814912e5b8ce2456.zip"
     },
     {
-      "name": "ui-8f8a3e8ae9c7.zip",
-      "sha256": "8f8a3e8ae9c757fabf956bdcc6f056021f1e546db40114d0b9f718c202f6f28e",
+      "name": "ui-d97e568a6c2f.zip",
+      "sha256": "d97e568a6c2f9d53229b12f70822c5df942c423365a876d8fc22cc5065c8675e",
       "bytes": 8083440,
-      "source": "http://모코코.웹.한국:8163/resourcepack-8f8a3e8ae9c757fabf956bdcc6f056021f1e546db40114d0b9f718c202f6f28e.zip"
+      "source": "http://모코코.웹.한국:8163/resourcepack-d97e568a6c2f9d53229b12f70822c5df942c423365a876d8fc22cc5065c8675e.zip"
     },
     {
       "name": "MokoKeys-1.3.3-a911cfa085ab.jar",
