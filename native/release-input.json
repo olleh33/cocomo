@@ -1,6 +1,6 @@
 {
-  "version": "3.0.6",
-  "tag": "moko-v3.0.6",
+  "version": "3.0.7",
+  "tag": "moko-v3.0.7",
   "assets": [
     {
       "name": "resourcepack-200ba12c080d.zip",
@@ -15,10 +15,10 @@
       "source": "http://모코코.웹.한국:8163/resourcepack-d97e568a6c2f9d53229b12f70822c5df942c423365a876d8fc22cc5065c8675e.zip"
     },
     {
-      "name": "MokoKeys-1.3.3-a911cfa085ab.jar",
-      "sha256": "a911cfa085abbc64b8fefdf43d5483a17e8792fd6fb96a4364536aa3cec1a681",
-      "bytes": 84048,
-      "local_file": "release-assets/MokoKeys-1.3.3-a911cfa085ab.jar"
+      "name": "MokoKeys-1.3.4-23d4afdab45b.jar",
+      "sha256": "23d4afdab45b9664ec8cbda1b5d6e1d7b9ad7c436d8b33de8519dcb6900ecd73",
+      "bytes": 88330,
+      "local_file": "release-assets/MokoKeys-1.3.4-23d4afdab45b.jar"
     },
     {
       "name": "bsl-ko-b0bc9c240ddf.lang",
