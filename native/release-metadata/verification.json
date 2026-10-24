@@ -1,6 +1,6 @@
 {
   "version": "3.0.1",
-  "release": "3.0.7",
+  "release": "3.0.8",
   "local_checks": 73,
   "source_rebuild_reproducible": true,
   "exe_sha256": "39a17a7aa6a7f6855b831b54f6d99e11a613a7b64d257535d4a5637a0c986548",
