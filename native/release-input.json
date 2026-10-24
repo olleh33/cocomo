@@ -1,12 +1,12 @@
 {
-  "version": "3.0.5",
-  "tag": "moko-v3.0.5",
+  "version": "3.0.6",
+  "tag": "moko-v3.0.6",
   "assets": [
     {
-      "name": "resourcepack-646ffc78a688.zip",
-      "sha256": "646ffc78a68818ff7a927a5493f1f33975a5d864ad683bf7814912e5b8ce2456",
-      "bytes": 23171973,
-      "source": "http://모코코.웹.한국:8163/resourcepack-646ffc78a68818ff7a927a5493f1f33975a5d864ad683bf7814912e5b8ce2456.zip"
+      "name": "resourcepack-200ba12c080d.zip",
+      "sha256": "200ba12c080df4926e17ef56867ad9018cc92441c46a559d60e3b890814937ed",
+      "bytes": 23203414,
+      "source": "http://모코코.웹.한국:8163/resourcepack-200ba12c080df4926e17ef56867ad9018cc92441c46a559d60e3b890814937ed.zip"
     },
     {
       "name": "ui-d97e568a6c2f.zip",
