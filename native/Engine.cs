@@ -128,6 +128,20 @@ namespace MokoLauncher {
             var bytes=bundled!=null&&bundled.LongLength==Num(descriptor,"bytes")&&Hash(bundled)==Str(descriptor,"sha256")?bundled:Fetch(url,Num(descriptor,"bytes"));
             Check(bytes,descriptor);AtomicWrite(path,bytes);return bytes;
         }
+        // Match PublishedPack.java and Minecraft 1.21.8's verified downloads/<UUID>/<SHA-1> cache.
+        // This is a cache only, not an enabled local pack: the server still chooses and validates it.
+        public static string ServerPackCachePath(string game,byte[] bytes,object descriptor) {
+            Check(bytes,descriptor);
+            byte[] id;using(var md5=MD5.Create())id=md5.ComputeHash(Utf8.GetBytes("mokovillage:pack:"+Str(descriptor,"sha256")));
+            id[6]=(byte)((id[6]&0x0f)|0x30);id[8]=(byte)((id[8]&0x3f)|0x80);
+            string hex=BitConverter.ToString(id).Replace("-","").ToLowerInvariant();
+            string uuid=hex.Substring(0,8)+"-"+hex.Substring(8,4)+"-"+hex.Substring(12,4)+"-"+hex.Substring(16,4)+"-"+hex.Substring(20,12);
+            string sha1;using(var hash=SHA1.Create())sha1=BitConverter.ToString(hash.ComputeHash(bytes)).Replace("-","").ToLowerInvariant();
+            return Child(game,"downloads/"+uuid+"/"+sha1);
+        }
+        public static void SeedServerPackCache(string game,byte[] bytes,object descriptor) {
+            AtomicWrite(ServerPackCachePath(game,bytes,descriptor),bytes);
+        }
         public static void Extract(byte[] bytes,string target) {
             NoLinks(target);Directory.CreateDirectory(target);
             using(var zip=new ZipArchive(new MemoryStream(bytes),ZipArchiveMode.Read)) {
@@ -260,10 +274,11 @@ namespace MokoLauncher {
                 if(config.Length==0){defaults["OverrideMemory"]="true";defaults["MinMemAlloc"]="1024";defaults["MaxMemAlloc"]="4096";defaults["OverrideJavaLocation"]="false";defaults["OverrideCommands"]="false";}
                 changes["prism-data/instances/"+InstanceId+"/instance.cfg"]=Utf8.GetBytes(Ini(config,defaults));
                 changes["prism-data/instances/"+InstanceId+"/mmc-pack.json"]=Utf8.GetBytes(Serialize(new Dictionary<string,object>{{"formatVersion",1},{"components",componentList}}));
-                if(live)Cached(Num(m,"schema")==1?patch+"/resourcepack.zip":Str(Get(m,"pack"),"url"),Get(m,"pack"),".zip");
+                byte[] serverPack=live?Cached(Num(m,"schema")==1?patch+"/resourcepack.zip":Str(Get(m,"pack"),"url"),Get(m,"pack"),".zip"):null;
                 changes["verified-manifest.json"]=bytes;changes["verified-manifest.sig"]=Utf8.GetBytes(signature);changes["installed-patch.json"]=bytes;
                 Require(!GameRunning(),"파일을 받는 동안 Minecraft가 실행됐어요. 게임을 종료한 뒤 다시 패치해 주세요.");
                 progress("검증한 패치를 적용하고 있어요…");Apply(Data,changes);
+                if(serverPack!=null){progress("서버 리소스팩을 게임 캐시에 준비하고 있어요…");SeedServerPackCache(Game,serverPack,Get(m,"pack"));}
                 AtomicWrite(Child(Data,"last-check.json"),Utf8.GetBytes(Serialize(new{status="verified",revision=Str(m,"revision"),live=live,utc=DateTime.UtcNow.ToString("o")})));
                 progress("패치 점검을 마쳤어요.");return exe;
             }

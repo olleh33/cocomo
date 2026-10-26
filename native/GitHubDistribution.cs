@@ -9,7 +9,7 @@ namespace MokoLauncher {
     public static class GitHubDistribution {
         public const string Repository = "olleh33/cocomo";
         public const string Latest = "https://github.com/"+Repository+"/releases/latest/download";
-        public const string CurrentVersion = "3.0.1";
+        public const string CurrentVersion = "3.0.2";
         public const string ServerDomain = "모코코.웹.한국";
         public static string MigrateServerAddress(string saved,string current) {
             string address=Engine.ServerAddress(saved);

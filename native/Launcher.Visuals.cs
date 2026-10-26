@@ -62,7 +62,7 @@ namespace MokoLauncher {
             background=Image.FromFile(Path.Combine(assets,"background.gif"));downloading=Image.FromFile(Path.Combine(assets,"downloading.gif"));
             connecting=Image.FromFile(Path.Combine(assets,"connecting.png"));logo=Image.FromFile(Path.Combine(assets,"icon.png"));
             frameChanged=delegate {
-                if(IsHandleCreated&&!IsDisposed){try{BeginInvoke((MethodInvoker)delegate{if(!IsDisposed){AnimationFrames++;Invalidate(new Rectangle(380,103,480,289));}});}catch(InvalidOperationException){}}
+                if(IsHandleCreated&&!IsDisposed){try{BeginInvoke((MethodInvoker)delegate{if(!IsDisposed){AnimationFrames++;Invalidate(new Rectangle(0,103,860,289));}});}catch(InvalidOperationException){}}
             };
             ImageAnimator.Animate(background,frameChanged);
             PlayButton.Text="게임 시작  ▶";PlayButton.Primary=true;PlayButton.Font=new Font("맑은 고딕",20,FontStyle.Bold);PlayButton.SetBounds(548,435,280,88);
@@ -120,16 +120,18 @@ namespace MokoLauncher {
                     using(var f=new Font("맑은 고딕",12,FontStyle.Bold))using(var b=new SolidBrush(white))g.DrawString(PublicDomain,f,b,new RectangleF(150,330,560,28),sf);
                     using(var f=new Font("맑은 고딕",9))using(var b=new SolidBrush(muted))g.DrawString("JAVA 1.21.8   ·   GitHub 자동 패치",f,b,new RectangleF(150,365,560,22),sf);
                 }
+            }else if(mode=="Patching"){
+                using(var b=new SolidBrush(BackColor))g.FillRectangle(b,0,104,860,288);
+                using(var p=MokoButton.Round(new RectangleF(254,126,352,254),20))using(var b=new SolidBrush(Color.FromArgb(250,30,45,26)))g.FillPath(b,p);
+                g.DrawImage(downloading,new Rectangle(281,149,298,186));
+                using(var sf=new StringFormat()){sf.Alignment=StringAlignment.Center;sf.LineAlignment=StringAlignment.Center;
+                    using(var f=new Font("맑은 고딕",12,FontStyle.Bold))using(var b=new SolidBrush(green))g.DrawString("잠깐만! 준비하고 있어요",f,b,new RectangleF(254,341,352,30),sf);
+                }
             }else{
                 TextAt(g,"우리끼리 함께하는 작은 세계",10,FontStyle.Bold,green,new RectangleF(32,130,430,26));
                 TextAt(g,"오늘도\n같이 놀자!",32,FontStyle.Bold,white,new RectangleF(27,160,440,116));
                 TextAt(g,PublicDomain,15,FontStyle.Bold,green,new RectangleF(32,295,420,36));
                 TextAt(g,"JAVA 1.21.8   ·   GitHub 자동 패치",9,FontStyle.Regular,muted,new RectangleF(32,346,430,26));
-                if(mode=="Patching"){
-                    using(var p=MokoButton.Round(new RectangleF(476,126,352,254),20))using(var b=new SolidBrush(Color.FromArgb(250,30,45,26)))g.FillPath(b,p);
-                    g.DrawImage(downloading,new Rectangle(502,149,298,186));
-                    TextAt(g,"잠깐만! 준비하고 있어요",12,FontStyle.Bold,green,new RectangleF(520,341,285,30));
-                }
             }
             using(var b=new SolidBrush(Color.FromArgb(16,31,24)))g.FillRectangle(b,0,392,860,188);
             using(var b=new SolidBrush(Color.FromArgb(45,66,45)))g.FillRectangle(b,32,400,796,3);

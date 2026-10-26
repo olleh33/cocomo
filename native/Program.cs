@@ -10,8 +10,8 @@ using System.Windows.Forms;
 
 [assembly:AssemblyTitle("뫀코코의 마을 접속기")]
 [assembly:AssemblyProduct("뫀코코의 마을")]
-[assembly:AssemblyVersion("3.0.1.0")]
-[assembly:AssemblyFileVersion("3.0.1.0")]
+[assembly:AssemblyVersion("3.0.2.0")]
+[assembly:AssemblyFileVersion("3.0.2.0")]
 [assembly:AssemblyDescription("검증된 패치를 직접 적용하는 Windows 접속기")]
 namespace MokoLauncher {
     public static class Program {
